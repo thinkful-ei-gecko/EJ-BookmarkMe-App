@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="Style.css">
+    <title>BookMe</title>
+</head>
+
+<body>
+    <header>
+        <img class="headerImg" src="https://img.icons8.com/flat_round/64/000000/bookmark-book.png">
+        <h2 class="headerText">Welcome to Book<span class="headerTextMe">Me</span></h2>
+    </header>
+
+    <form id="js-shopping-list-form">
+        <label for="shopping-list-entry">Book Title</label>
+        <input type="text" name="shopping-list-entry" class="js-shopping-list-entry"
+            placeholder="The Memoirs of Sherlock Holmes" required>
+        <label for="book-url">Url</label>
+        <input type="text" name="book-url" class="js-book-url"
+            placeholder="https://openlibrary.org/works/OL262598W/The_Memoirs_of_Sherlock_Holmes" required>
+        <label for="book-desc">Description</label>
+        <input type="text" name="book-desc" class="js-book-desc" placeholder="Story has a predicting ending." required>
+        <label for="book-rating">Rating</label>
+        <input type="text" name="book-rating" class="js-book-rating" placeholder="4" required>
+        <button type="submit">Add item</button>
+        <div class="seachBar">
+            <label for="js-shopping-list-search-entry">Search:</label>
+            <input type="text" name="shopping-list-search-entry" class="js-shopping-list-search-entry" />
+        </div>
+    </form>
+
+    <ul class="library js-library">
+    </ul>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cuid/1.3.8/browser-cuid.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="Api.js"></script>
+    <script type="text/javascript" src="Books.js"></script>
+    <script type="text/javascript" src="Store.js"></script>
+    <script type="text/javascript" src="BookList.js"></script>
+    <script type="text/javascript" src="Index.js"></script>
+
+</body>
+
+</html>

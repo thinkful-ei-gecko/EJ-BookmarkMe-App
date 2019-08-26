@@ -1,0 +1,101 @@
+* {
+    color: white;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+}
+
+/*
+Content for the header banner at top of the page
+*/
+
+header {
+    margin-top: 3vh;
+    text-align: center;
+}
+
+.headerText {
+    display: inline;
+    font-size: 7vh;
+    vertical-align: middle;
+}
+
+.headerImg {
+    display: inline;
+    margin-right: 2vh;
+    vertical-align: middle;
+}
+
+.headerTextMe {
+    color: darkorange;
+}
+
+/*
+Content for form to add books to bookmarks
+*/
+
+button, input[type="text"] {
+    padding: 5px;
+  }
+  
+  button:hover {
+    cursor: pointer;
+  }
+  
+  button:hover:disabled {
+    cursor: default;
+  }
+  
+  #shopping-list-item {
+    width: 250px;
+  }
+  
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .shopping-list {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .shopping-list > li {
+    margin-bottom: 20px;
+    border: 1px solid white;
+    padding: 20px;
+  }
+  
+  .shopping-item {
+    display: block;
+    color: white;
+    font-style: italic;
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .shopping-item__checked {
+    text-decoration: line-through;
+  }
+  
+  .js-shopping-list-entry {
+      color: black;
+  }
+
+  .js-book-url {
+      color: black
+  }
+
+  .js-book-desc {
+    color: black
+}
+
+.js-book-rating {
+    color: black
+}
+
+.seachBar {
+  margin-top: 1vh;
+}
