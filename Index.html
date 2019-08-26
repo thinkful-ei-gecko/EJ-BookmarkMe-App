@@ -15,23 +15,11 @@
         <h2 class="headerText">Welcome to Book<span class="headerTextMe">Me</span></h2>
     </header>
 
-    <form id="js-shopping-list-form">
-        <label for="shopping-list-entry">Book Title</label>
-        <input type="text" name="shopping-list-entry" class="js-shopping-list-entry"
-            placeholder="The Memoirs of Sherlock Holmes" required>
-        <label for="book-url">Url</label>
-        <input type="text" name="book-url" class="js-book-url"
-            placeholder="https://openlibrary.org/works/OL262598W/The_Memoirs_of_Sherlock_Holmes" required>
-        <label for="book-desc">Description</label>
-        <input type="text" name="book-desc" class="js-book-desc" placeholder="Story has a predicting ending." required>
-        <label for="book-rating">Rating</label>
-        <input type="text" name="book-rating" class="js-book-rating" placeholder="4" required>
-        <button type="submit">Add item</button>
-        <div class="seachBar">
-            <label for="js-shopping-list-search-entry">Search:</label>
-            <input type="text" name="shopping-list-search-entry" class="js-shopping-list-search-entry" />
-        </div>
-    </form>
+    <div class="addBookForm">
+        <button class="addABook js-addBook">
+            <span>Add a Book</span>
+        </button>
+    </div>
 
     <ul class="library js-library">
     </ul>

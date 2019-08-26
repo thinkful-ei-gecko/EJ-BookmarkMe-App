@@ -20,30 +20,25 @@ const BookList = (function () {
 
         //<button class="shopping-item-edit js-item-edit" ${editBtnStatus}> (line 28)
 
-        return `<li class="js-item-element" data-item-id="${item.id}">
+        return `<li class="book js-item-element" data-item-id="${item.id}">
         ${itemTitle}
-        <div class="shopping-item-controls">
-        <p>${item.desc}</p>
-        <p>${item.rating}</p>
-        <a>${item.url}</a>
-          <button class="shopping-item-edit js-item-edit"
-            <span class="button-label">edit</span>
-          </button>
-          <button class="shopping-item-toggle js-item-toggle">
-            <span class="button-label">check</span>
-          </button>
-          <button class="shopping-item-delete js-item-delete">
-            <span class="button-label">delete</span>
-          </button>
+        <div class="book-item-controls">
+        <p class="itemRating">Rating: ${item.rating}</p>
+        <p class="itemDescription hide">Description: ${item.desc}</p>
+        <a class="itemUrl hide">Link: ${item.url}</a>
+        <button class="book-item-delete js-item-delete">
+            <span class="button-label">Delete</span>
+        </button>
+        <button class="book-item-view js-item-view"
+            <span class="button-label">View</span>
+         </button>
         </div>
       </li>`;
     }
 
-
     function generateShoppingItemsString(booklist) {
         return booklist.map(item => generateItemElement(item)).join('');
     }
-
 
     function render() {
         // Filter item list if store prop is true by item.checked === false
@@ -72,11 +67,11 @@ const BookList = (function () {
         console.log('`render` ran');
     }
 
-
     function handleNewItemSubmit() {
-        $('#js-shopping-list-form').submit(function (event) {
+        $('.addBookForm').on('submit', '#js-book-list-form', function (event) {
+            console.log('form submitted');
             event.preventDefault();
-            const newItemTitle = $('.js-shopping-list-entry').val();
+            const newItemTitle = $('.js-book-title-entry').val();
             const newItemUrl = $('.js-book-url').val();
             const newItemDesc = $('.js-book-desc').val();
             const newItemRating = $('.js-book-rating').val();
@@ -86,7 +81,7 @@ const BookList = (function () {
                 desc: newItemDesc,
                 rating: newItemUrl
             }
-            $('.js-shopping-list-entry').val('');
+            $('.js-book-title-entry').val('');
             $('.js-book-url').val('');
             $('.js-book-desc').val('');
             $('.js-book-rating').val('');
@@ -94,6 +89,7 @@ const BookList = (function () {
             if (newItemTitle === undefined || newItemUrl === undefined) {
                 alert('Sorry please input an object')
             }
+
 
             //creating a new item and adding it to store
             api.createItem(newItemTitle, newItemUrl, newItemDesc, newItemRating)
@@ -114,7 +110,7 @@ const BookList = (function () {
     }
 
     function handleItemCheckClicked() {
-        $('.js-shopping-list').on('click', '.js-item-toggle', event => {
+        $('.js-book-list').on('click', '.js-item-toggle', event => {
             const id = getItemIdFromElement(event.currentTarget);
             let tof = BookStore.findById(id);
             api.updateItem(id, {
@@ -145,19 +141,18 @@ const BookList = (function () {
         });
     }
 
-    function handleEditShoppingItemSubmit() {
-        $('.js-shopping-list').on('submit', '.js-edit-item', event => {
-            store.clearError();
+    function handleEditBookItemSubmit() {
+        $('.js-book-list').on('submit', '.js-edit-item', event => {
             event.preventDefault();
             const id = getItemIdFromElement(event.currentTarget);
-            const itemName = $(event.currentTarget).find('.shopping-item').val();
+            const itemName = $(event.currentTarget).find('.book-item').val();
             console.log(BookStore.findAndUpdate(id, itemName));
             store.setItemIsEditing(id, false);
             api.updateItem(id, {
-                name: itemName
+                desc: itemName
             }).then(() => {
                 store.findAndUpdate(id, {
-                    name: itemName
+                    desc: itemName
                 });
                 render();
             }).catch(err => {
@@ -166,43 +161,35 @@ const BookList = (function () {
         });
     }
 
-    function handleToggleFilterClick() {
-        $('.js-filter-checked').click(() => {
-            BookStore.toggleCheckedFilter();
-            render();
-        });
+    function handleAddNewBook(){
+        $('.js-addBook').on('click', event => {
+            BookStore.AddNewBook();
+            //render();
+    });
+    
     }
 
-    function handleShoppingListSearch() {
-        $('.js-shopping-list-search-entry').on('keyup', event => {
-            const val = $(event.currentTarget).val();
-            BookStore.setSearchTerm(val);
-            render();
-        });
-    }
-
-    function handleItemStartEditing() {
-        $('.js-shopping-list').on('click', '.js-item-edit', event => {
-            const id = getItemIdFromElement(event.target);
-            BookStore.setItemIsEditing(id, true);
-            render();
-        });
+    function handleViewClicked(){
+        $('.js-library').on('click', '.js-item-view', event => {
+            BookStore.items.view
+            BookStore.ViewClicked();
+            //render();
+        })
     }
 
     function bindEventListeners() {
         handleNewItemSubmit();
         handleItemCheckClicked();
         handleDeleteItemClicked();
-        handleEditShoppingItemSubmit();
-        handleToggleFilterClick();
-        handleShoppingListSearch();
-        handleItemStartEditing();
+        handleEditBookItemSubmit();
+        handleAddNewBook();
+        handleViewClicked();
     }
 
     // This object contains the only exposed methods from this module:
     return {
         render: render,
         bindEventListeners: bindEventListeners,
-        handleEditShoppingItemSubmit
+        handleEditBookItemSubmit
     };
 }());

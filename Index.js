@@ -18,8 +18,8 @@ $(document).ready(function () {
     } else {
       api.getItems()
         .then(res => res.json())
-        .then((items) => {
-          BookList.handleEditShoppingItemSubmit()
+        .then(() => {
+          BookList.handleEditBookItemSubmit()
             .then(res => res.json())
             .then(() => console.log('updated!'))
             .catch(error => console.log(error + ' No books in the bookmarks list yet'))
