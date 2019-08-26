@@ -80,6 +80,12 @@ const BookList = (function () {
             const newItemUrl = $('.js-book-url').val();
             const newItemDesc = $('.js-book-desc').val();
             const newItemRating = $('.js-book-rating').val();
+            const newItem = {
+                title: newItemTitle,
+                url: newItemUrl,
+                desc: newItemDesc,
+                rating: newItemUrl
+            }
             $('.js-shopping-list-entry').val('');
             $('.js-book-url').val('');
             $('.js-book-desc').val('');
@@ -92,8 +98,8 @@ const BookList = (function () {
             //creating a new item and adding it to store
             api.createItem(newItemTitle, newItemUrl, newItemDesc, newItemRating)
                 .then(res => res.json())
-                .then((newItemTitle, newItemUrl, newItemDesc, newItemRating) => {
-                    BookStore.addItem(newItemTitle, newItemUrl, newItemDesc, newItemRating);
+                .then((newItem) => {
+                    BookStore.addItem(newItem);
                     render();
                 }).catch(err => {
                     alert('Please insert valid statements');

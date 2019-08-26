@@ -2,8 +2,8 @@
 /* global Item */
 // eslint-disable-next-line no-unused-vars
 const BookStore = (function () {
-  const addItem = function (title, url, desc, rating) {
-    this.items.push(title, url, desc, rating);
+  const addItem = function (object) {
+    this.items.push(object);
   };
 
   const findById = function (id) {
@@ -11,6 +11,8 @@ const BookStore = (function () {
   };
 
   const findAndDelete = function (id) {
+    console.log(id);
+    console.log(BookStore.items);
     this.items = this.items.filter(item => item.id !== id)
   };
 
