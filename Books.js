@@ -11,7 +11,6 @@ const Item = (function(){
   const create = function(title, url, desc, rating) {
     return {
       id: cuid(),
-      view: false,
       title,
       url,
       desc,

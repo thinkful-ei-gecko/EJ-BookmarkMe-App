@@ -90,11 +90,14 @@ const BookList = (function () {
                 alert('Sorry please input an object')
             }
 
-
             //creating a new item and adding it to store
             api.createItem(newItemTitle, newItemUrl, newItemDesc, newItemRating)
                 .then(res => res.json())
                 .then((newItem) => {
+                    $('.addBookForm').html(`
+                    <button class="addABook js-addBook">
+                        <span>Add a Book</span>
+                    </button>`)
                     BookStore.addItem(newItem);
                     render();
                 }).catch(err => {
@@ -162,9 +165,9 @@ const BookList = (function () {
     }
 
     function handleAddNewBook(){
-        $('.js-addBook').on('click', event => {
+        $('.addBookForm').on('click', '.js-addBook', event => {
             BookStore.AddNewBook();
-            //render();
+            render();
     });
     
     }
