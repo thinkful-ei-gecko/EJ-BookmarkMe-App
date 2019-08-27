@@ -8,12 +8,12 @@ const api = (function () {
     return fetch(`${BASE_URL}`);
   }
 
-  function createItem(title, url, desc, rating) {
+  function createItem(object) {
     const newItem = {
-      title: title,
-      url: url,
-      desc: desc,
-      rating: rating
+      title: object.title,
+      url: object.url,
+      desc: object.desc,
+      rating: object.rating
     };
 
     return fetch(BASE_URL, {

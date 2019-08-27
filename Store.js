@@ -4,6 +4,10 @@
 const BookStore = (function () {
 
   const addItem = function (object) {
+    if (object.url === undefined){
+      alert('Please insert valid inputs')
+      return null;
+    }
     object.view = true;
     this.items.push(object);
   };
@@ -27,7 +31,7 @@ const BookStore = (function () {
         <input type="text" name="book-title-entry" class="js-book-title-entry"
         placeholder="The Memoirs of Sherlock Holmes" required>
       <label for="book-rating" class="bookRatingEntry">Rating</label>
-        <input type="text" name="book-rating" class="js-book-rating" placeholder="4">
+        <input type="text" name="book-rating" class="js-book-rating" placeholder="1-5">
     </div>
     <div class="row2">
       <label for="book-desc" class="bookDescEntry">Description</label>
@@ -48,6 +52,13 @@ const BookStore = (function () {
     id.view = !id.view;
   }
 
+  const filterBy = function (number) {
+    let newArray = BookStore.items.filter(item => {
+      return item.rating == number
+    })
+    return newArray
+  }
+
   return {
     items: [],
     // hideCheckedItems: false,
@@ -57,7 +68,8 @@ const BookStore = (function () {
     findById,
     findAndDelete,
     AddNewBook,
-    ViewClicked
+    ViewClicked,
+    filterBy
     // findAndUpdate,
     // setSearchTerm
   };

@@ -16,7 +16,7 @@ const BookList = (function () {
         <div class="book-item-controls">
         <p class="itemRating">Rating: ${item.rating}/5</p>
         <p class="${showDesc}">Description: ${item.desc}</p>
-        <p class="${show}">Link: ${item.url}</p>
+        <a href="${item.url}" class="${show}">Link: ${item.url}</a>
         <button class="book-item-delete js-item-delete">
             <span class="button-label">Delete</span>
         </button>
@@ -42,8 +42,15 @@ const BookList = (function () {
             return item;
         })
 
-        if (BookStore.searchTerm) {
-            items = items.filter(item => item.name.includes(BookStore.searchTerm));
+
+        let selectedValue = $('select').children("option:selected").val();
+
+        if (selectedValue === undefined){
+            selectedValue = 'default'
+        }
+
+        if (selectedValue !== 'default') {
+            filterItems = BookStore.filterBy(selectedValue);
         }
 
         if (filterItems === undefined || filterItems.length === 0) {
@@ -66,12 +73,14 @@ const BookList = (function () {
             const newItemUrl = $('.js-book-url').val();
             const newItemDesc = $('.js-book-desc').val();
             const newItemRating = $('.js-book-rating').val();
+
             const newItem = {
                 title: newItemTitle,
                 url: newItemUrl,
                 desc: newItemDesc,
                 rating: newItemRating
             }
+
             $('.js-book-title-entry').val('');
             $('.js-book-url').val('');
             $('.js-book-desc').val('');
@@ -81,9 +90,12 @@ const BookList = (function () {
                 alert('Sorry please input an object')
             }
 
+            console.log(newItem.desc);
+            console.log(newItem.rating);
+
 
             //creating a new item and adding it to store
-            api.createItem(newItemTitle, newItemUrl, newItemDesc, newItemRating)
+            api.createItem(newItem)
                 .then(res => res.json())
                 .then((newItem) => {
                     $('.addBookForm').html(`
@@ -183,6 +195,14 @@ const BookList = (function () {
         })
     }
 
+    function handleFilterBy(){
+        $('select').change( event => {
+            let filter = $('select').children("option:selected").val();
+            console.log(filter);
+            render();
+        })
+    }
+
     function bindEventListeners() {
         handleNewItemSubmit();
         handleItemCheckClicked();
@@ -190,6 +210,7 @@ const BookList = (function () {
         handleEditBookItemSubmit();
         handleAddNewBook();
         handleViewClicked();
+        handleFilterBy();
     }
 
     // This object contains the only exposed methods from this module:
