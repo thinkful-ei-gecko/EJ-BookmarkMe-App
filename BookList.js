@@ -5,27 +5,18 @@
 const BookList = (function () {
 
     function generateItemElement(item) {
-        // const checkedClass = item.checked ? 'shopping-item__checked' : '';
-        // const editBtnStatus = item.checked ? 'disabled' : '';
 
-        //`<span class="shopping-item ${checkedClass}">${item.name}</span>`; this is for added feature (line 13)
         let itemTitle = `<span class="book-title">${item.title}</span>`;
-        // if (item.isEditing) {
-        //   itemTitle = `
-        //     <form class="js-edit-item">
-        //       <input class="shopping-item" type="text" value="${item.title}" />
-        //     </form>
-        //   `;
-        // }
 
-        //<button class="shopping-item-edit js-item-edit" ${editBtnStatus}> (line 28)
+        let show = item.view ? 'hide' : 'itemUrl';
+        let showDesc = item.view ? 'hide' : 'itemDescription';
 
         return `<li class="book js-item-element" data-item-id="${item.id}">
         ${itemTitle}
         <div class="book-item-controls">
-        <p class="itemRating">Rating: ${item.rating}</p>
-        <p class="itemDescription hide">Description: ${item.desc}</p>
-        <a class="itemUrl hide">Link: ${item.url}</a>
+        <p class="itemRating">Rating: ${item.rating}/5</p>
+        <p class="${showDesc}">Description: ${item.desc}</p>
+        <p class="${show}">Link: ${item.url}</p>
         <button class="book-item-delete js-item-delete">
             <span class="button-label">Delete</span>
         </button>
@@ -44,7 +35,7 @@ const BookList = (function () {
         // Filter item list if store prop is true by item.checked === false
         //******************************THIS IS REPLACED************************** */
         let items = [...BookStore.items];
-        let filterItems = items.filter(item=>{
+        let filterItems = items.filter(item => {
             if (item === undefined) {
                 return null;
             }
@@ -55,7 +46,7 @@ const BookList = (function () {
             items = items.filter(item => item.name.includes(BookStore.searchTerm));
         }
 
-        if (filterItems === undefined || filterItems.length === 0){
+        if (filterItems === undefined || filterItems.length === 0) {
             return $('.js-library').html(`<h2>Add some books to your bookmark list!</h2>`);
         } else {
             const shoppingListItemsString = generateShoppingItemsString(filterItems);
@@ -79,7 +70,7 @@ const BookList = (function () {
                 title: newItemTitle,
                 url: newItemUrl,
                 desc: newItemDesc,
-                rating: newItemUrl
+                rating: newItemRating
             }
             $('.js-book-title-entry').val('');
             $('.js-book-url').val('');
@@ -90,6 +81,7 @@ const BookList = (function () {
                 alert('Sorry please input an object')
             }
 
+
             //creating a new item and adding it to store
             api.createItem(newItemTitle, newItemUrl, newItemDesc, newItemRating)
                 .then(res => res.json())
@@ -97,7 +89,16 @@ const BookList = (function () {
                     $('.addBookForm').html(`
                     <button class="addABook js-addBook">
                         <span>Add a Book</span>
-                    </button>`)
+                    </button>
+                    <select class="filterBtn js-filter-option">
+                        <option value="default">Default</option>
+                        <option value="1-2">1-2 <span class="stars">Stars</span></option>
+                        <option value="2-3">2-3 <span class="stars">Stars</span></option>
+                        <option value="3-4">3-4 <span class="stars">Stars</span></option>
+                        <option value="4-5">4-5 <span class="stars">Stars</span></option>
+                        <option value="5">5 <span class="stars">Stars</span></option>
+                    </select>
+                    `)
                     BookStore.addItem(newItem);
                     render();
                 }).catch(err => {
@@ -164,19 +165,21 @@ const BookList = (function () {
         });
     }
 
-    function handleAddNewBook(){
+    function handleAddNewBook() {
         $('.addBookForm').on('click', '.js-addBook', event => {
             BookStore.AddNewBook();
             render();
-    });
-    
+        });
+
     }
 
-    function handleViewClicked(){
+    function handleViewClicked() {
         $('.js-library').on('click', '.js-item-view', event => {
-            BookStore.items.view
-            BookStore.ViewClicked();
-            //render();
+            const id = getItemIdFromElement(event.currentTarget);
+            let currentObject = BookStore.findById(id);
+
+            BookStore.ViewClicked(currentObject);
+            render();
         })
     }
 

@@ -4,6 +4,7 @@
 const BookStore = (function () {
 
   const addItem = function (object) {
+    object.view = true;
     this.items.push(object);
   };
 
@@ -26,11 +27,11 @@ const BookStore = (function () {
         <input type="text" name="book-title-entry" class="js-book-title-entry"
         placeholder="The Memoirs of Sherlock Holmes" required>
       <label for="book-rating" class="bookRatingEntry">Rating</label>
-        <input type="text" name="book-rating" class="js-book-rating" placeholder="4" required>
+        <input type="text" name="book-rating" class="js-book-rating" placeholder="4">
     </div>
     <div class="row2">
       <label for="book-desc" class="bookDescEntry">Description</label>
-        <input type="text" name="book-desc" class="js-book-desc" placeholder="Story has a predicting ending." required>
+        <input type="text" name="book-desc" class="js-book-desc" placeholder="Story has a predicting ending.">
     </div>
     <div class="row3">
     <label for="book-url" class="bookUrlEntry">Url</label>
@@ -41,10 +42,10 @@ const BookStore = (function () {
 </form>`);
   }
 
-  const ViewClicked = function () {
+  const ViewClicked = function (id) {
     console.log('view being clicked')
-    $('.itemDescription').toggleClass('hide');
-    $('.itemUrl').toggleClass('hide');
+    console.log(!id.view);
+    id.view = !id.view;
   }
 
   return {

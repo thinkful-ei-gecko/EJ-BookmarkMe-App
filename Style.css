@@ -116,11 +116,14 @@ Main design where all bookmarks are listed
 }
 
 .itemDescription {
+  display: block;
   margin-top: 1vh;
 }
 
 .itemUrl {
+  display: block;
   margin-top: 1vh;
+  width: 40%
 }
 
 .book-title {
@@ -138,6 +141,7 @@ Main design where all bookmarks are listed
 .book-item-delete {
   margin-top: -2vh;
   float: right;
+  margin-right: -0.7vh;
   background-color: black;
 }
 
@@ -162,11 +166,13 @@ form {
 }
 
 .bookTitleEntry {
+  margin-left: -12.4vh;
   margin-right: 1vh;
   margin-top: 0.5vh;
 }
 
 .js-book-title-entry {
+  width: 16.8vh;
   color: black;
 }
 
@@ -176,18 +182,23 @@ form {
   margin-left: 1vh;
 }
 
+.js-book-rating {
+  width: 4vh;
+}
+
 .row2 {
   display: flex;
   justify-content: center;
 }
 
 .bookDescEntry {
+  margin-left: -13.1vh;
   margin-top: 0.5vh;
   margin-right: 1vh;
 }
 
 .js-book-desc {
-  max-width: 50%;
+  width: 55.3%;
   max-height: 10vh;
 }
 
@@ -202,7 +213,23 @@ form {
   margin-right: 1vh;
 }
 
+.js-book-url {
+  width: 55%;
+}
+
 .submitBtn {
   background-color: black;
   margin-left: 1vh;
+}
+
+.filterBtn {
+  background-color: black;
+  text-align: center;
+  font-size: 2vh;
+  border: 2px solid white;
+  height: 4vh;
+}
+
+.filterBtn:hover {
+ cursor: pointer;
 }
