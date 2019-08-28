@@ -97,17 +97,18 @@ Main design where all bookmarks are listed
   padding-left: 1vh;
   padding-right: 1vh; 
   width: 100%;
+  position: absolute;
 }
 
 .book{
-  border: solid 2px white;
+  border: solid 1.5px white;
   margin-bottom: 1vh;
   padding: 1vh;
 }
 
 .itemRating {
   margin-top: 1vh;
-  font-size: 1.8vh;
+  font-size: 2.5vh;
 }
 
 .hide {
@@ -115,43 +116,62 @@ Main design where all bookmarks are listed
 }
 
 .itemDescription {
+  font-size: 2.2vh;
   display: block;
   margin-top: 1vh;
   overflow-wrap: break-word;
-  width: 65%;
+  width: 85%;
 }
 
 .itemUrl {
+  font-size: 2.2vh;
   display: block;
   margin-top: 1vh;
   overflow-wrap: break-word;
-  width: 65%;
+  width: 64%;
 }
 .itemUrl:hover{
   cursor: pointer;
-  color: orange;
+  color: darkorange;
 }
 
 .book-title {
   text-decoration: underline;
-  font-size: 2.5vh;
+  font-size: 3.2vh;
 }
 
 .book-item-view {
-  display: block;
-  margin-top: -3.3vh;
-  margin-right: 0.5vh;
-  float: right;
+  border: groove 0.3vh white;
   background-color: black;
+  width: 9vh;
+  margin-right: 0.5vh;
+  font-size: 2vh;
 }
 
 .book-item-delete {
-  display: block;
-  margin-top: -3.3vh;
-  float: right;
-  margin-right: -0.7vh;
+  border: groove 0.3vh white;
   background-color: black;
+  width: 9vh;
+  font-size: 2vh;
 }
+
+.buttons {
+  position: relative;
+  right: -0.5vh;
+  bottom: -0.5vh;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.bookmarkIcon {
+  display: block;
+  position: relative;
+  width: 7vh;
+  margin-top: -1.2vh;
+  margin-left: 80%;
+
+}
+
 
 /*
 This is the form for adding a new book
@@ -169,60 +189,61 @@ form {
 .row1 {
   display: flex;
   margin-bottom: 1vh;
-  justify-content: center;
+  justify-content: left;
   vertical-align: middle;
 }
 
 .bookTitleEntry {
-  margin-left: -12.4vh;
-  margin-right: 1vh;
-  margin-top: 0.5vh;
+  display: block;
+  width: 30%;
+  margin-top: 1vh;
 }
 
 .js-book-title-entry {
-  width: 16.8vh;
+  width: 25%;
   color: black;
 }
 
 .bookRatingEntry {
-  margin-top: 0.5vh;
-  margin-right: 1vh;
-  margin-left: 1vh;
+  display: block;
+  width: 20%;
+  margin-top: 1vh;
 }
 
 .js-book-rating {
-  width: 4vh;
+  width: 5vh;;
 }
 
 .row2 {
   display: flex;
-  justify-content: center;
+  justify-content: left;
 }
 
 .bookDescEntry {
-  margin-left: -14.8vh;
-  margin-top: 0.5vh;
-  margin-right: 1vh;
+  display: block;
+  width: 30%;
+  margin-top: 1vh;
 }
 
 .js-book-desc {
-  width: 55.3%;
+  width: 40%;
   max-height: 10vh;
 }
 
 .row3 {
   margin-top: 1vh;
   display: flex;
-  justify-content: center;
+  justify-content: left;
 }
 
 .bookUrlEntry {
-  margin-top: 0.5vh;
-  margin-right: 1vh;
+  display: block;
+  width: 30%;
+  margin-top: 1vh;
 }
 
 .js-book-url {
-  width: 55%;
+  width: 40%;
 }
 
 .submitBtn {
@@ -231,13 +252,24 @@ form {
 }
 
 .filterBtn {
-  background-color: black;
-  text-align: center;
+  background-color: #ff8c00;
   font-size: 2vh;
-  border: 2px solid white;
-  height: 4vh;
+  color: black;
+  border: 0.3vh solid white;
+  border-radius: none;
 }
 
 .filterBtn:hover {
  cursor: pointer;
+}
+
+/*
+Media Queries Will All Be Here
+*/
+
+@media only screen and (min-width: 768px) {
+  .js-book-rating {
+    width: 5vh;
+    margin-left: -2.8%;
+  }
 }

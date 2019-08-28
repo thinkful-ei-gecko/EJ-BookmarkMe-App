@@ -8,21 +8,33 @@ const BookList = (function () {
 
         let itemTitle = `<span class="book-title">${item.title}</span>`;
 
+        let bookmarkImg = item.view ? `/Images/bookmark.png` : `/Images/bookmark (1).png`
+
         let show = item.view ? 'hide' : 'itemUrl';
         let showDesc = item.view ? 'hide' : 'itemDescription';
 
+        let ifDesc = item.desc ? 
+        `<p class="${showDesc}">Description: ${item.desc}</p>` : `<p class="${showDesc}">Description: No Description</p>`
+
+        let ifRating = item.rating ? 
+        `<p class="itemRating">Rating: ${item.rating}/5</p>` : `<p class="itemRating">Rating: No Rating</p>`
+
         return `<li class="book js-item-element" data-item-id="${item.id}">
+        <img rel="stylesheet" src="${bookmarkImg}" class="bookmarkIcon">
         ${itemTitle}
         <div class="book-item-controls">
-        <p class="itemRating">Rating: ${item.rating}/5</p>
-        <p class="${showDesc}">Description: ${item.desc}</p>
+        ${ifRating}
+        <br>
+        ${ifDesc}
         <a href="${item.url}" class="${show}">Link: ${item.url}</a>
+        <div class="buttons">
         <button class="book-item-delete js-item-delete">
             <span class="button-label">Delete</span>
         </button>
         <button class="book-item-view js-item-view"
             <span class="button-label">View</span>
          </button>
+         </div>
         </div>
       </li>`;
     }
@@ -76,9 +88,15 @@ const BookList = (function () {
 
             const newItem = {
                 title: newItemTitle,
-                url: newItemUrl,
-                desc: newItemDesc,
-                rating: newItemRating
+                url: newItemUrl
+            }
+
+            if (newItemDesc !== "") {
+                newItem.desc = newItemDesc;
+            }
+
+            if (newItemRating !== "") {
+                newItem.rating = newItemRating;
             }
 
             $('.js-book-title-entry').val('');
@@ -86,8 +104,9 @@ const BookList = (function () {
             $('.js-book-desc').val('');
             $('.js-book-rating').val('');
 
-            if (newItemTitle === undefined || newItemUrl === undefined) {
+            if (!newItemTitle || !newItemUrl) {
                 alert('Sorry please input an object')
+                return;
             }
 
             console.log(newItem.desc);
