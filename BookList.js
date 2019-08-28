@@ -8,7 +8,7 @@ const BookList = (function () {
 
         let itemTitle = `<span class="book-title">${item.title}</span>`;
 
-        let bookmarkImg = item.view ? `/Images/bookmark.png` : `/Images/bookmark (1).png`
+        let bookmarkImg = item.view ? `https://github.com/thinkful-ei-gecko/EJ-BookmarkMe-App/blob/master/Images/bookmark.png?raw=true` : `https://raw.githubusercontent.com/thinkful-ei-gecko/EJ-BookmarkMe-App/master/Images/bookmark%20(1).png`
 
         let show = item.view ? 'hide' : 'itemUrl';
         let showDesc = item.view ? 'hide' : 'itemDescription';
