@@ -263,6 +263,22 @@ form {
  cursor: pointer;
 }
 
+.cancel {
+  display: block;
+  position: relative;
+  float: right;
+  text-align: center;
+  font-size: 1vh;
+  margin-top: -4vh;
+  margin-right: -1%;
+}
+
+.cancelImg {
+  width: 3vh;
+  height: 3vh;
+  background-color: white;
+}
+
 /*
 Media Queries Will All Be Here
 */
@@ -271,5 +287,19 @@ Media Queries Will All Be Here
   .js-book-rating {
     width: 5vh;
     margin-left: -2.8%;
+  }
+}
+
+@media screen and (max-width: 410px){
+  .cancel {
+    margin-top: -14.5vh;
+    margin-right: -1vh;
+  }
+}
+
+@media screen and (min-width: 411px){
+  .cancel {
+    margin-top: -3.7vh;
+    margin-right: -0.8vh;
   }
 }

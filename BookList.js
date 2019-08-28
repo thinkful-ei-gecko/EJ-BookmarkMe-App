@@ -8,7 +8,8 @@ const BookList = (function () {
 
         let itemTitle = `<span class="book-title">${item.title}</span>`;
 
-        let bookmarkImg = item.view ? `https://github.com/thinkful-ei-gecko/EJ-BookmarkMe-App/blob/master/Images/bookmark.png?raw=true` : `https://raw.githubusercontent.com/thinkful-ei-gecko/EJ-BookmarkMe-App/master/Images/bookmark%20(1).png`
+        let bookmarkImg = item.view ? 
+        `https://github.com/thinkful-ei-gecko/EJ-BookmarkMe-App/blob/master/Images/bookmark.png?raw=true` : `https://raw.githubusercontent.com/thinkful-ei-gecko/EJ-BookmarkMe-App/master/Images/bookmark%20(1).png`
 
         let show = item.view ? 'hide' : 'itemUrl';
         let showDesc = item.view ? 'hide' : 'itemDescription';
@@ -222,6 +223,13 @@ const BookList = (function () {
         })
     }
 
+    function handleCancelClicked(){
+        $('.addBookForm').on('click', '.cancel', event => {
+            BookStore.CancelClicked();
+            render();
+        })
+    }
+
     function bindEventListeners() {
         handleNewItemSubmit();
         handleItemCheckClicked();
@@ -230,6 +238,7 @@ const BookList = (function () {
         handleAddNewBook();
         handleViewClicked();
         handleFilterBy();
+        handleCancelClicked();
     }
 
     // This object contains the only exposed methods from this module:
