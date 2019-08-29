@@ -123,11 +123,11 @@ const BookList = (function () {
                     </button>
                     <select class="filterBtn js-filter-option">
                         <option value="default">Default</option>
-                        <option value="1-2">1-2 <span class="stars">Stars</span></option>
-                        <option value="2-3">2-3 <span class="stars">Stars</span></option>
-                        <option value="3-4">3-4 <span class="stars">Stars</span></option>
-                        <option value="4-5">4-5 <span class="stars">Stars</span></option>
-                        <option value="5">5 <span class="stars">Stars</span></option>
+                        <option value="1">1<span class="stars">Stars</span></option>
+                        <option value="2">2<span class="stars">Stars</span></option>
+                        <option value="3">3<span class="stars">Stars</span></option>
+                        <option value="4">4<span class="stars">Stars</span></option>
+                        <option value="5">5<span class="stars">Stars</span></option>
                     </select>
                     `)
                     BookStore.addItem(newItem);
