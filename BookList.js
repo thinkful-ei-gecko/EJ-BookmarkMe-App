@@ -8,17 +8,17 @@ const BookList = (function () {
 
         let itemTitle = `<span class="book-title">${item.title}</span>`;
 
-        let bookmarkImg = item.view ? 
-        `https://github.com/thinkful-ei-gecko/EJ-BookmarkMe-App/blob/master/Images/bookmark.png?raw=true` : `https://raw.githubusercontent.com/thinkful-ei-gecko/EJ-BookmarkMe-App/master/Images/bookmark%20(1).png`
+        let bookmarkImg = item.view ?
+            `https://github.com/thinkful-ei-gecko/EJ-BookmarkMe-App/blob/master/Images/bookmark.png?raw=true` : `https://raw.githubusercontent.com/thinkful-ei-gecko/EJ-BookmarkMe-App/master/Images/bookmark%20(1).png`
 
         let show = item.view ? 'hide' : 'itemUrl';
         let showDesc = item.view ? 'hide' : 'itemDescription';
 
-        let ifDesc = item.desc ? 
-        `<p class="${showDesc}">Description: ${item.desc}</p>` : `<p class="${showDesc}">Description: No Description</p>`
+        let ifDesc = item.desc ?
+            `<p class="${showDesc}">Description: ${item.desc}</p>` : `<p class="${showDesc}">Description: No Description</p>`
 
-        let ifRating = item.rating ? 
-        `<p class="itemRating">Rating: ${item.rating}/5</p>` : `<p class="itemRating">Rating: No Rating</p>`
+        let ifRating = item.rating ?
+            `<p class="itemRating">Rating: ${item.rating}/5</p>` : `<p class="itemRating">Rating: No Rating</p>`
 
         return `<li class="book js-item-element" data-item-id="${item.id}">
         <img rel="stylesheet" src="${bookmarkImg}" class="bookmarkIcon">
@@ -58,7 +58,7 @@ const BookList = (function () {
 
         let selectedValue = $('select').children("option:selected").val();
 
-        if (selectedValue === undefined){
+        if (selectedValue === undefined) {
             selectedValue = 'default'
         }
 
@@ -124,11 +124,11 @@ const BookList = (function () {
                     </button>
                     <select class="filterBtn js-filter-option">
                         <option value="default">Default</option>
-                        <option value="1">1<span >Star</span></option>
-                        <option value="2">2<span >Stars</span></option>
-                        <option value="3">3<span >Stars</span></option>
-                        <option value="4">4<span >Stars</span></option>
-                        <option value="5">5<span >Stars</span></option>
+                        <option value="1">1 <span>Star</span></option>
+                        <option value="2">2 <span>Stars</span></option>
+                        <option value="3">3 <span>Stars</span></option>
+                        <option value="4">4 <span>Stars</span></option>
+                        <option value="5">5 <span>Stars</span></option>
                     </select>
                     `)
                     BookStore.addItem(newItem);
@@ -215,15 +215,15 @@ const BookList = (function () {
         })
     }
 
-    function handleFilterBy(){
-        $('select').change( event => {
+    function handleFilterBy() {
+        $('select').change(event => {
             let filter = $('select').children("option:selected").val();
             console.log(filter);
             render();
         })
     }
 
-    function handleCancelClicked(){
+    function handleCancelClicked() {
         $('.addBookForm').on('click', '.cancel', event => {
             BookStore.CancelClicked();
             render();
