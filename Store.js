@@ -23,6 +23,7 @@ const BookStore = (function () {
   };
 
   const AddNewBook = function () {
+  
     console.log('add a new book clicked');
     $('.addBookForm').html(`
     <form id="js-book-list-form">
@@ -43,7 +44,22 @@ const BookStore = (function () {
         placeholder="https://openlibrary.org/works/OL262598W/The_Memoirs_of_Sherlock_Holmes" required>
       <button class="submitBtn" type="submit">Add item</button>
     </div>
+    <button class="cancel"><img class="cancelImg" alt="cancel" src="./Images/circle-cropped.png"</button>
 </form>`);
+  }
+
+  const CancelClicked = function() {
+    $('.addBookForm').html(`<button class="addABook js-addBook">
+    <span>Add a Book</span>
+</button>
+<select class="filterBtn js-filter-option">
+    <option value="default">Default</option>
+    <option value="1">1 <span>Star</span></option>
+    <option value="2">2 <span>Stars</span></option>
+    <option value="3">3 <span>Stars</span></option>
+    <option value="4">4 <span>Stars</span></option>
+    <option value="5">5 <span>Stars</span></option>
+</select>`)
   }
 
   const ViewClicked = function (id) {
@@ -69,7 +85,8 @@ const BookStore = (function () {
     findAndDelete,
     AddNewBook,
     ViewClicked,
-    filterBy
+    filterBy,
+    CancelClicked
     // findAndUpdate,
     // setSearchTerm
   };
