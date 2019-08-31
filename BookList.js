@@ -74,6 +74,8 @@ const BookList = (function () {
             $('.js-library').html(shoppingListItemsString);
         }
 
+        handleFilterBy();
+
         // render the shopping list in the DOM
         console.log('`render` ran');
     }
@@ -157,6 +159,7 @@ const BookList = (function () {
                     checked: !tof.checked
                 });
                 render();
+                handleFilterBy();
             }).catch(err => {
                 BookStore.getError(err);
             });
@@ -174,6 +177,7 @@ const BookList = (function () {
             api.deleteItem(id).then(() => {
                 BookStore.findAndDelete(id);
                 render();
+                handleFilterBy();
             });
         });
     }
