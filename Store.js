@@ -29,18 +29,18 @@ const BookStore = (function () {
     <form id="js-book-list-form">
     <div class="row1">
       <label for="book-title-entry" class="bookTitleEntry">Book Title</label>
-        <input type="text" name="book-title-entry" class="js-book-title-entry"
+        <input type="text" name="book-title-entry" class="js-book-title-entry tabindex="0" "
         placeholder="The Memoirs of Sherlock Holmes" required>
       <label for="book-rating" class="bookRatingEntry">Rating</label>
-        <input type="number" name="book-rating" class="js-book-rating" placeholder="1-5">
+        <input type="number" min="1" max="5" name="book-rating" class="js-book-rating" placeholder="1-5" tabindex="0" >
     </div>
     <div class="row2">
       <label for="book-desc" class="bookDescEntry">Description</label>
-        <input type="text" name="book-desc" class="js-book-desc" placeholder="Story has a predicting ending.">
+        <input type="text" name="book-desc" class="js-book-desc" placeholder="Story has a predicting ending." tabindex="0" >
     </div>
     <div class="row3">
     <label for="book-url" class="bookUrlEntry">Url</label>
-        <input type="text" name="book-url" class="js-book-url"
+        <input type="text" name="book-url" class="js-book-url tabindex="0" "
         placeholder="https://openlibrary.org/works/OL262598W/The_Memoirs_of_Sherlock_Holmes" required>
       <button class="submitBtn" type="submit">Add item</button>
     </div>

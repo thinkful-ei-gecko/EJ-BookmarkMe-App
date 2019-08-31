@@ -289,18 +289,17 @@ Media Queries Will All Be Here
     width: 5vh;
     margin-left: -2.8%;
   }
-}
 
-@media screen and (max-width: 410px){
   .cancel {
-    right: 15px;
-    bottom: 10px;
+    bottom: 85px;
+    right: 5px;
   }
+
 }
 
-@media screen and (min-width: 411px){
+@media screen and (max-width: 414px){
   .cancel {
-    margin-top: -3.7vh;
-    margin-right: -0.8vh;
+    right: 0px;
+    bottom: 90px;
   }
 }
