@@ -133,6 +133,7 @@ const BookList = (function () {
                     `)
                     BookStore.addItem(newItem);
                     render();
+                    handleFilterBy();
                 }).catch(err => {
                     alert('Please insert valid statements');
                 });

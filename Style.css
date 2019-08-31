@@ -184,6 +184,7 @@ form {
   text-align: center;
   border: solid 2px white;
   margin-bottom: 1vh;
+  position: relative;
 }
 
 .row1 {
@@ -265,12 +266,12 @@ form {
 
 .cancel {
   display: block;
-  position: relative;
+  position: absolute;
   float: right;
   text-align: center;
   font-size: 1vh;
-  margin-top: -4vh;
-  margin-right: -1%;
+  bottom: 5px;
+  right: 10px;
 }
 
 .cancelImg {
@@ -292,8 +293,8 @@ Media Queries Will All Be Here
 
 @media screen and (max-width: 410px){
   .cancel {
-    margin-top: -14.5vh;
-    margin-right: -1vh;
+    right: 15px;
+    bottom: 10px;
   }
 }
 

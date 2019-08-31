@@ -32,7 +32,7 @@ const BookStore = (function () {
         <input type="text" name="book-title-entry" class="js-book-title-entry"
         placeholder="The Memoirs of Sherlock Holmes" required>
       <label for="book-rating" class="bookRatingEntry">Rating</label>
-        <input type="text" name="book-rating" class="js-book-rating" placeholder="1-5">
+        <input type="number" name="book-rating" class="js-book-rating" placeholder="1-5">
     </div>
     <div class="row2">
       <label for="book-desc" class="bookDescEntry">Description</label>
